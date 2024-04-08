@@ -53,6 +53,6 @@ impl<'a> System<'a> for RenderingSystem<'a> {
         self.draw_text(&mut canvas, &gameplay.state.to_string(), 525.0, 80.0);
         self.draw_text(&mut canvas, &gameplay.moves_count.to_string(), 525.0, 100.0);
 
-        canvas.finish(self.context);
+        canvas.finish(self.context).expect("game error");
     }
 }

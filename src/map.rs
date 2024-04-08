@@ -1,4 +1,4 @@
-use crate::components::Position;
+use crate::components::{BoxColour, Position};
 use crate::entities::{create_box, create_box_spot, create_floor, create_player, create_wall};
 use specs::World;
 
@@ -26,13 +26,21 @@ pub fn load_map(world: &mut World, map_string: String) {
                     create_floor(world, position);
                     create_player(world, position);
                 }
-                "B" => {
+                "BB" => {
                     create_floor(world, position);
-                    create_box(world, position);
+                    create_box(world, position, BoxColour::Blue);
                 }
-                "S" => {
+                "RB" => {
                     create_floor(world, position);
-                    create_box_spot(world, position);
+                    create_box(world, position, BoxColour::Red);
+                }
+                "BS" => {
+                    create_floor(world, position);
+                    create_box_spot(world, position, BoxColour::Blue);
+                }
+                "RS" => {
+                    create_floor(world, position);
+                    create_box_spot(world, position, BoxColour::Red);
                 }
                 "N" => (),
                 c => panic!("unrecognized map item {}", c),

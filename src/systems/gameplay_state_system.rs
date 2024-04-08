@@ -23,9 +23,14 @@ impl<'a> System<'a> for GameplayStateSystem {
 
         // loop through all box spots and check if there is a corresponding
         // box at that position
-        for (_box_spot, position) in (&box_spots, &positions).join() {
-            if boxes_by_position.contains_key(&(position.x, position.y)) {
-                // continue
+        for (box_spot, position) in (&box_spots, &positions).join() {
+            if let Some(the_box) = boxes_by_position.get(&(position.x, position.y)) {
+                if the_box.colour == box_spot.colour {
+                    // continue
+                } else {
+                    // return, haven't won yet
+                    return;
+                }
             } else {
                 gameplay_state.state = GameplayState::Playing;
                 return;
