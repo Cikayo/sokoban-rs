@@ -2092,6 +2092,7 @@ version = "0.1.0"
 dependencies = [
  "ggez",
  "glam 0.27.0",
+ "itertools",
  "specs",
 ]
 

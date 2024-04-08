@@ -1,6 +1,7 @@
 use ggez::input::keyboard::KeyCode;
 use specs::World;
 use std::fmt::{self, Display};
+use std::time::Duration;
 
 #[derive(Default)]
 pub struct InputQueue {
@@ -35,8 +36,14 @@ pub struct Gameplay {
     pub moves_count: u32,
 }
 
+#[derive(Default)]
+pub struct Time {
+    pub delta: Duration,
+}
+
 // Registering resources
 pub fn register_resources(world: &mut World) {
     world.insert(InputQueue::default());
     world.insert(Gameplay::default());
+    world.insert(Time::default());
 }

@@ -9,3 +9,4 @@ edition = "2021"
 ggez = "0.9.3"
 glam = { version = "0.27.0", features = ["mint"] }
 specs = { version = "0.20.0", features = ["specs-derive"] }
+itertools = "0.12.1"
